@@ -1,0 +1,35 @@
+<section class="wizard-step active">
+  <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+  <h2 class="step-title">4. Fiscal</h2>
+
+  <!-- Card 1: Seleção de Regime Tributário -->
+  <div class="card-question">
+    <div class="form-grid">
+      <div class="form-group full-width">
+        <label for="regime">Regime</label>
+        <select class="form-control" id="regime">
+          <option value="nao_sabe" selected>Não sabe informar</option>
+          <option value="simples">Simples Nacional</option>
+          <option value="presumido">Lucro Presumido</option>
+          <option value="real">Lucro Real</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: Acompanhamento Fiscal Especializado -->
+  <div class="card-question">
+    <h3>Possui acompanhamento fiscal especializado em telecom?</h3>
+    <div class="pill-group">
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Sim</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Não</button>
+      <button type="button" class="pill-btn selected" onclick="selectPill(this)">Não sabe informar</button>
+    </div>
+  </div>
+
+  <!-- Ações da Etapa -->
+  <div class="step-actions">
+    <button type="button" class="btn-secondary" onclick="loadStep(3)">Voltar</button>
+    <button type="button" class="btn-primary" onclick="loadStep(5)">Continuar</button>
+  </div>
+</section>

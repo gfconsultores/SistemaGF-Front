@@ -1,0 +1,78 @@
+<section class="wizard-step active">
+  <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 20%;"></div></div>
+  <h2 class="step-title">1. Empresa</h2>
+
+  <div class="card-question">
+    <div class="form-grid">
+      <!-- Linha 1: CNPJ + Botão Consultar -->
+      <div class="form-group">
+        <label for="cnpj">CNPJ</label>
+        <input type="text" class="form-control" id="cnpj" value="05439562000150" placeholder="00000000000000">
+      </div>
+      <div class="form-group" style="justify-content: flex-end;">
+        <button type="button" class="btn-primary" style="height: 42px; width: 100%;">Consultar CNPJ</button>
+      </div>
+
+      <!-- Linha 2: Razão Social (Full Width) -->
+      <div class="form-group full-width">
+        <label for="razaoSocial">Razão Social *</label>
+        <input type="text" class="form-control" id="razaoSocial" value="VIRTEX TELECOM LTDA">
+      </div>
+
+      <!-- Linha 3: Nome Fantasia + Situação Cadastral -->
+      <div class="form-group">
+        <label for="nomeFantasia">Nome Fantasia</label>
+        <input type="text" class="form-control" id="nomeFantasia" value="VIRTEX TELECOM">
+      </div>
+      <div class="form-group">
+        <label for="situacaoCadastral">Situação Cadastral</label>
+        <input type="text" class="form-control" id="situacaoCadastral" value="ATIVA">
+      </div>
+
+      <!-- Linha 4: Município + UF -->
+      <div class="form-group">
+        <label for="municipio">Município</label>
+        <input type="text" class="form-control" id="municipio" value="PICOS">
+      </div>
+      <div class="form-group">
+        <label for="uf">UF</label>
+        <input type="text" class="form-control" id="uf" value="PI">
+      </div>
+
+      <!-- Linha 5: Capital Social + E-mail -->
+      <div class="form-group">
+        <label for="capitalSocial">Capital Social</label>
+        <input type="text" class="form-control" id="capitalSocial" value="20.000.000,00">
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" placeholder="">
+      </div>
+
+      <!-- Linha 6: Telefone + Representante Legal -->
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" id="telefone" value="8934223902">
+      </div>
+      <div class="form-group">
+        <label for="representanteLegal">Representante Legal *</label>
+        <input type="text" class="form-control" id="representanteLegal" placeholder="">
+      </div>
+
+      <!-- Linha 7: CPF Representante -->
+      <div class="form-group">
+        <label for="cpfRepresentante">CPF Representante *</label>
+        <input type="text" class="form-control" id="cpfRepresentante" placeholder="">
+      </div>
+      <div class="form-group">
+        <!-- Espaçador para manter o alinhamento da grid -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Ações da Etapa -->
+  <div class="step-actions">
+    <div></div> <!-- Espaçador para alinhar botão continuar à direita -->
+    <button type="button" class="btn-primary" onclick="loadStep(2)">Continuar</button>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<section class="wizard-step active">
+  <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 40%;"></div></div>
+  <h2 class="step-title">2. Anatel</h2>
+
+  <!-- Pergunta 1: SCM -->
+  <div class="card-question">
+    <h3>Possui Outorga SCM?</h3>
+    <div class="pill-group">
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Sim</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Não</button>
+      <button type="button" class="pill-btn selected" onclick="selectPill(this)">Não sabe informar</button>
+    </div>
+  </div>
+
+  <!-- Pergunta 2: STFC -->
+  <div class="card-question">
+    <h3>Possui STFC?</h3>
+    <div class="pill-group">
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Sim</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Não</button>
+      <button type="button" class="pill-btn selected" onclick="selectPill(this)">Não sabe informar</button>
+    </div>
+  </div>
+
+  <!-- Pergunta 3: Interesse STFC -->
+  <div class="card-question">
+    <h3>Tem interesse em STFC?</h3>
+    <div class="pill-group">
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Sim</button>
+      <button type="button" class="pill-btn selected" onclick="selectPill(this)">Não</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Não sabe informar</button>
+    </div>
+  </div>
+
+  <!-- Pergunta 4: SeAC -->
+  <div class="card-question">
+    <h3>Possui SeAC?</h3>
+    <div class="pill-group">
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Sim</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Não</button>
+      <button type="button" class="pill-btn selected" onclick="selectPill(this)">Não sabe informar</button>
+    </div>
+  </div>
+
+  <!-- Pergunta 5: Interesse SeAC -->
+  <div class="card-question">
+    <h3>Tem interesse em SeAC?</h3>
+    <div class="pill-group">
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Sim</button>
+      <button type="button" class="pill-btn selected" onclick="selectPill(this)">Não</button>
+      <button type="button" class="pill-btn" onclick="selectPill(this)">Não sabe informar</button>
+    </div>
+  </div>
+
+  <!-- Ações da Etapa -->
+  <div class="step-actions">
+    <button type="button" class="btn-secondary" onclick="loadStep(1)">Voltar</button>
+    <button type="button" class="btn-primary" onclick="loadStep(3)">Continuar</button>
+  </div>
+</section>
