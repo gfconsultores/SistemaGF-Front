@@ -7,70 +7,93 @@
 
   <div class="card-question">
     <div class="form-grid">
+      
       <!-- Linha 1: CNPJ + Botão Consultar -->
       <div class="form-group">
         <label for="cnpj">CNPJ</label>
-        <input type="text" class="form-control" id="cnpj" value="05439562000150" placeholder="00000000000000">
+        <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00">
       </div>
       
       <div class="form-group form-group-btn">
-        <button type="button" class="btn-primary btn-consultar">Consultar CNPJ</button>
+        <button type="button" class="btn-primary btn-consultar">Consultar</button>
       </div>
 
-      <!-- Linha 2: Razão Social -->
+      <!-- Linha 2: Razão Social (Largura total) -->
       <div class="form-group full-width">
-        <label for="razaoSocial">Razão Social *</label>
-        <input type="text" class="form-control" id="razaoSocial" value="VIRTEX TELECOM LTDA">
+        <label for="razaoSocial">Razão Social</label>
+        <input type="text" class="form-control" id="razaoSocial" placeholder="">
       </div>
 
-      <!-- Linha 3: Nome Fantasia + Situação Cadastral -->
+      <!-- Linha 3: Nome Fantasia + Capital Social -->
       <div class="form-group">
         <label for="nomeFantasia">Nome Fantasia</label>
-        <input type="text" class="form-control" id="nomeFantasia" value="VIRTEX TELECOM">
+        <input type="text" class="form-control" id="nomeFantasia" placeholder="">
       </div>
-      <div class="form-group">
-        <label for="situacaoCadastral">Situação Cadastral</label>
-        <input type="text" class="form-control" id="situacaoCadastral" value="ATIVA">
-      </div>
-
-      <!-- Linha 4: Município + UF -->
-      <div class="form-group">
-        <label for="municipio">Município</label>
-        <input type="text" class="form-control" id="municipio" value="PICOS">
-      </div>
-      <div class="form-group">
-        <label for="uf">UF</label>
-        <input type="text" class="form-control" id="uf" value="PI">
-      </div>
-
-      <!-- Linha 5: Capital Social + E-mail -->
       <div class="form-group">
         <label for="capitalSocial">Capital Social</label>
-        <input type="text" class="form-control" id="capitalSocial" value="20.000.000,00">
-      </div>
-      <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="">
+        <input type="text" class="form-control" id="capitalSocial" placeholder="">
       </div>
 
-      <!-- Linha 6: Telefone + Representante Legal -->
+      <!-- Linha 4: CEP + Logradouro -->
       <div class="form-group">
-        <label for="telefone">Telefone</label>
-        <input type="text" class="form-control" id="telefone" value="8934223902">
+        <label for="cep">CEP</label>
+        <input type="text" class="form-control" id="cep" placeholder="00000-000">
       </div>
       <div class="form-group">
-        <label for="representanteLegal">Representante Legal *</label>
+        <label for="logradouro">Logradouro</label>
+        <input type="text" class="form-control" id="logradouro" placeholder="">
+      </div>
+
+      <!-- Linha 5: Número + Complemento -->
+      <div class="form-group">
+        <label for="numero">Número</label>
+        <input type="text" class="form-control" id="numero" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="complemento">Complemento</label>
+        <input type="text" class="form-control" id="complemento" placeholder="">
+      </div>
+
+      <!-- Linha 6: Bairro + Município -->
+      <div class="form-group">
+        <label for="bairro">Bairro</label>
+        <input type="text" class="form-control" id="bairro" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="municipio">Município</label>
+        <input type="text" class="form-control" id="municipio" placeholder="">
+      </div>
+
+      <!-- Linha 7: UF + Representante Legal -->
+      <div class="form-group">
+        <label for="uf">UF</label>
+        <input type="text" class="form-control" id="uf" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="representanteLegal">Representante Legal</label>
         <input type="text" class="form-control" id="representanteLegal" placeholder="">
       </div>
 
-      <!-- Linha 7: CPF Representante -->
+      <!-- Linha 8: CPF Representante + Cargo -->
       <div class="form-group">
-        <label for="cpfRepresentante">CPF Representante *</label>
-        <input type="text" class="form-control" id="cpfRepresentante" placeholder="">
+        <label for="cpfRepresentante">CPF Representante</label>
+        <input type="text" class="form-control" id="cpfRepresentante" placeholder="000.000.000-00">
       </div>
       <div class="form-group">
-        <!-- Espaçador de grid -->
+        <label for="cargo">Cargo</label>
+        <input type="text" class="form-control" id="cargo" placeholder="">
       </div>
+
+      <!-- Linha 9: E-mail + Telefone/WhatsApp -->
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" placeholder="exemplo@empresa.com.br">
+      </div>
+      <div class="form-group">
+        <label for="telefoneWhatsapp">Telefone/WhatsApp</label>
+        <input type="text" class="form-control" id="telefoneWhatsapp" placeholder="(00) 00000-0000">
+      </div>
+
     </div>
   </div>
 

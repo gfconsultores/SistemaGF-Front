@@ -5,8 +5,10 @@
   <h2 class="step-title">5. Necessidade</h2>
 
   <div class="card-question">
-    <div class="form-grid">
+    <!-- Usamos a classe exclusiva de necessidades -->
+    <div class="necessidades-grid">
       
+      <!-- Item 1 -->
       <div class="form-group">
         <label class="checkbox-option">
           <input type="checkbox" name="necessidade" value="regularizacao" class="custom-checkbox">
@@ -14,20 +16,7 @@
         </label>
       </div>
 
-      <div class="form-group">
-        <label class="checkbox-option">
-          <input type="checkbox" name="necessidade" value="anatel" class="custom-checkbox">
-          <span>Anatel</span>
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label class="checkbox-option">
-          <input type="checkbox" name="necessidade" value="fiscal" class="custom-checkbox">
-          <span>Fiscal</span>
-        </label>
-      </div>
-
+      <!-- Item 2 -->
       <div class="form-group">
         <label class="checkbox-option">
           <input type="checkbox" name="necessidade" value="anatel_fiscal" class="custom-checkbox">
@@ -35,6 +24,15 @@
         </label>
       </div>
 
+      <!-- Item 3 -->
+      <div class="form-group">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="anatel" class="custom-checkbox">
+          <span>Anatel</span>
+        </label>
+      </div>
+
+      <!-- Item 4 -->
       <div class="form-group">
         <label class="checkbox-option">
           <input type="checkbox" name="necessidade" value="resp_tecnica" class="custom-checkbox">
@@ -42,6 +40,15 @@
         </label>
       </div>
 
+      <!-- Item 5 -->
+      <div class="form-group">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="fiscal" class="custom-checkbox">
+          <span>Fiscal</span>
+        </label>
+      </div>
+
+      <!-- Item 6 -->
       <div class="form-group">
         <label class="checkbox-option">
           <input type="checkbox" name="necessidade" value="gestao_completa" class="custom-checkbox">
@@ -52,7 +59,7 @@
     </div>
   </div>
 
-  <!-- Ações -->
+  <!-- Ações da Etapa -->
   <div class="step-actions">
     <button type="button" class="btn-secondary" onclick="loadStep(4)">Voltar</button>
     <button type="button" class="btn-primary" onclick="loadStep(6)">Gerar diagnóstico</button>
