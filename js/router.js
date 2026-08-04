@@ -1,4 +1,4 @@
-// Mapeamento das rotas para os arquivos HTML de cada etapa
+// Mapeamento das rotas
 const routes = {
   1: './Sistema-Front/pages/empresa.html',
   2: './Sistema-Front/pages/anatel.html',
@@ -15,6 +15,13 @@ let currentStep = 1;
  * @param {number} stepNumber 
  */
 async function loadStep(stepNumber) {
+  // 🛑 TRAVA DE SEGURANÇA: Se estiver na Etapa 1 e tentar ir para frente sem preencher
+  if (currentStep === 1 && stepNumber > 1) {
+    if (typeof validateStep1 === 'function' && !validateStep1()) {
+      return; // Interrompe a navegação
+    }
+  }
+
   const container = document.getElementById('view-container');
   const route = routes[stepNumber];
 
@@ -30,7 +37,11 @@ async function loadStep(stepNumber) {
     currentStep = stepNumber;
     updateSidebar(stepNumber);
     
-    // Rola o conteúdo de volta ao topo ao trocar de página
+    // Ativa as máscaras de input na Etapa 1
+    if (stepNumber === 1 && typeof applyInputMasks === 'function') {
+      applyInputMasks();
+    }
+
     container.scrollTop = 0;
   } catch (error) {
     console.error('Erro no roteamento:', error);
@@ -39,8 +50,7 @@ async function loadStep(stepNumber) {
 }
 
 /**
- * Atualiza o item ativo visualmente na Sidebar / Menu
- * @param {number} activeStep 
+ * Atualiza o item ativo visualmente na Sidebar
  */
 function updateSidebar(activeStep) {
   const stepItems = document.querySelectorAll('.step-item');
@@ -53,58 +63,15 @@ function updateSidebar(activeStep) {
   });
 }
 
-/**
- * Alterna a exibição do Menu Hambúrguer (Apenas em telas de Celular/Tablet)
- */
-function toggleMobileMenu() {
-  // Trava para executar apenas se a tela for menor ou igual a 950px
-  if (window.innerWidth <= 950) {
-    const sidebar = document.getElementById('mobile-sidebar');
-    const overlay = document.getElementById('menu-overlay');
-
-    if (sidebar && overlay) {
-      sidebar.classList.toggle('mobile-open');
-      overlay.classList.toggle('active');
-    }
-  }
-}
-
-/**
- * Seleciona a etapa e fecha o menu drawer automaticamente (Mobile)
- * @param {number} stepNumber 
- */
-function selectStepAndCloseMenu(stepNumber) {
-  loadStep(stepNumber);
-  toggleMobileMenu();
-}
-
-/**
- * Gerencia a seleção dos botões estilo pílula (Sim / Não / Não Sabe Informar)
- * @param {HTMLElement} element 
- */
-function selectPill(element) {
-  const parentGroup = element.closest('.pill-group');
-  if (!parentGroup) return;
-
-  const buttons = parentGroup.querySelectorAll('.pill-btn');
-  buttons.forEach(btn => btn.classList.remove('selected'));
-  element.classList.add('selected');
-}
-
 // INICIALIZAÇÃO DO SISTEMA
 window.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Carrega a primeira etapa (Empresa)
     await loadStep(1);
   } catch (err) {
     console.warn("Aviso na inicialização:", err);
   } finally {
-    // Oculta a Splash Screen com transição suave após 2 segundos
-    setTimeout(() => {
-      const loader = document.getElementById('loader-wrapper');
-      if (loader) {
-        loader.classList.add('hidden');
-      }
-    }, 2000);
+    if (typeof hideSplashScreen === 'function') {
+      hideSplashScreen();
+    }
   }
 });

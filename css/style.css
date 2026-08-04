@@ -20,12 +20,10 @@
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-/* ESCONDE A NOTIFICAÇÃO DO BROWSERSYNC SE HOUVER */
 #__bs_notify__ {
   display: none !important;
 }
 
-/* ESTRUTURA GLOBAL DA PÁGINA (TRAVA DE TELA) */
 body {
   background-color: var(--bg-app);
   color: var(--text-main);
@@ -35,7 +33,7 @@ body {
   overflow: hidden;
 }
 
-/* 🚀 TELA DE PRÉ-CARREGAMENTO CLEAN (SPLASH SCREEN) */
+/* 🚀 SPLASH SCREEN */
 #loader-wrapper {
   position: fixed;
   top: 0;
@@ -46,7 +44,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8fafc; /* Branco frio corporativo */
+  background-color: #f8fafc;
   transition: opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
 }
 
@@ -81,7 +79,6 @@ body {
   animation: spin 0.7s linear infinite;
 }
 
-/* 🎥 ANIMAÇÕES DA TELA DE CARREGAMENTO */
 @keyframes logoPulse {
   0% { transform: scale(1); opacity: 0.92; }
   50% { transform: scale(1.04); opacity: 1; }
@@ -93,9 +90,9 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* TOPBAR FIXO */
+/* TOPBAR */
 .topbar {
-  height: 85px;
+  height: 64px;
   background-color: var(--primary-color);
   color: #fff;
   display: flex;
@@ -115,7 +112,6 @@ body {
 .brand h1 { font-size: 1.4rem; font-weight: 700; }
 .brand span { font-size: 0.80rem; opacity: 0.85; }
 
-/* BOTÃO HAMBÚRGUER (Oculto no Desktop) */
 .btn-hamburger {
   display: none;
   background: transparent;
@@ -151,7 +147,7 @@ body {
   background-color: #f1f5f9;
 }
 
-/* CONTAINER PRINCIPAL DO MEIO */
+/* MAIN CONTAINER */
 .main-container {
   display: flex;
   flex: 1;
@@ -159,7 +155,6 @@ body {
   position: relative;
 }
 
-/* SIDEBAR STEPPER (DESKTOP) */
 .sidebar {
   width: var(--sidebar-width);
   background-color: #ffffff;
@@ -192,7 +187,6 @@ body {
 .step-item:hover { background-color: var(--bg-app); }
 .step-item.active { background-color: #ebf4fc; color: var(--primary-color); }
 
-/* ÁREA DE CONTEÚDO DA PÁGINA */
 .content-area {
   flex: 1;
   padding: 32px;
@@ -210,7 +204,6 @@ body {
   gap: 20px;
 }
 
-/* BARRA DE PROGRESSO DO ATENDIMENTO */
 .progress-bar-container {
   width: 100%;
   height: 6px;
@@ -225,7 +218,6 @@ body {
   transition: width 0.4s ease;
 }
 
-/* Classes utilitárias de porcentagem */
 .progress-fill-20 { width: 20%; }
 .progress-fill-40 { width: 40%; }
 .progress-fill-50 { width: 50%; }
@@ -239,7 +231,6 @@ body {
   color: var(--text-main);
 }
 
-/* CARDS DE PERGUNTA E ESTRUTURA DOS FORMULÁRIOS */
 .card-question {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -249,12 +240,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.card-question h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-main);
 }
 
 .form-grid {
@@ -291,14 +276,19 @@ body {
   outline: none;
   background-color: #ffffff;
   color: var(--text-main);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .form-control:focus {
   border-color: var(--primary-color);
 }
 
-/* BOTÕES PÍLULA (SIM / NÃO / NÃO SABE INFORMAR) */
+/* ⚠️ CAMPO COM ERRO DE VALIDAÇÃO */
+.form-control.input-error {
+  border-color: #e74c3c !important;
+  background-color: #fdf2f2 !important;
+}
+
 .pill-group {
   display: flex;
   gap: 10px;
@@ -328,7 +318,6 @@ body {
   border-color: var(--primary-color);
 }
 
-/* NAVEGAÇÃO ENTRE AS ETAPAS (VOLTAR / CONTINUAR) */
 .step-actions {
   display: flex;
   justify-content: space-between;
@@ -388,7 +377,6 @@ body {
   width: 100%;
 }
 
-/* RODAPÉ FIXO NA PARTE INFERIOR */
 .app-footer {
   background-color: #ffffff;
   border-top: 1px solid var(--border-color);
@@ -420,7 +408,6 @@ body {
   text-decoration: underline;
 }
 
-/* OVERLAY PARA O MENU MOBILE */
 .menu-overlay {
   display: none;
   position: fixed;
@@ -435,7 +422,58 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* 📱 RESPONSIVIDADE PARA TABLETS E CELULARES (ATÉ 950PX) */
+/* 💬 ESTILOS DO MODAL DE ALERTA */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-icon { font-size: 1.8rem; }
+.modal-header h3 { color: var(--text-main); font-size: 1.2rem; }
+.modal-body p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; }
+.modal-footer { display: flex; justify-content: flex-end; }
+
+/* RESPONSIVIDADE (ATÉ 950PX) */
 @media (max-width: 950px) {
   .menu-overlay.active {
     display: block;
@@ -488,9 +526,8 @@ body {
   .footer-content { flex-direction: column; gap: 6px; text-align: center; }
 }
 
-/* 📲 APENAS PARA SMARTPHONES PEQUENOS (ATÉ 599PX) */
+/* SMARTPHONES PEQUENOS (ATÉ 599PX) */
 @media (max-width: 599px) {
-  /* No celular pequeno sim, empilha os botões para toque confortável */
   .step-actions {
     flex-direction: column-reverse;
     width: 100%;
