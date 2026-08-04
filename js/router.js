@@ -1,11 +1,10 @@
-// Mapeamento corrigido para os nomes exatos dos seus arquivos na pasta pages/
 const routes = {
   1: './Sistema-Front/pages/empresa.html',
   2: './Sistema-Front/pages/anatel.html',
   3: './Sistema-Front/pages/resp-tecnica.html',
   4: './Sistema-Front/pages/fiscal.html',
   5: './Sistema-Front/pages/necessidades.html',
-  6: './Sistema-Front/pages/resultado.html',
+  6: './Sistema-Front/pages/resultado.html'
 };
 
 let currentStep = 1;
@@ -18,34 +17,53 @@ async function loadStep(stepNumber) {
 
   try {
     const response = await fetch(route);
-    if (!response.ok) throw new Error('Erro ao carregar a página');
-    const htmlContent = await response.text();
-    
-    container.innerHTML = htmlContent;
+    if (!response.ok) throw new Error(`Erro ao carregar a página: ${response.statusText}`);
+
+    const html = await response.text();
+    container.innerHTML = html;
+
     currentStep = stepNumber;
-
-    // Atualiza destaque da Sidebar
-    document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
-    const activeMenu = document.getElementById(`menu-${stepNumber}`);
-    if (activeMenu) activeMenu.classList.add('active');
-
+    updateSidebar(stepNumber);
+    container.scrollTop = 0;
   } catch (error) {
-    container.innerHTML = `
-      <div class="card-question">
-        <h3>Erro ao carregar a etapa ${stepNumber}</h3>
-        <p>Verifique se o arquivo <strong>${route}</strong> existe na pasta <code>pages/</code>.</p>
-      </div>`;
+    console.error('Erro no roteamento:', error);
+    container.innerHTML = `<div style="color: #e74c3c; padding: 20px;">⚠️ Falha ao carregar a etapa ${stepNumber}.</div>`;
   }
 }
 
-// Alternar seleção dos botões estilo pílula (Sim / Não / Não Sabe)
-function selectPill(btn) {
-  const parent = btn.parentElement;
-  parent.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
+function updateSidebar(activeStep) {
+  const stepItems = document.querySelectorAll('.step-item');
+  stepItems.forEach((item, index) => {
+    if (index + 1 === activeStep) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
 }
 
-// Inicia na Etapa 1 ao carregar
-window.addEventListener('DOMContentLoaded', () => {
-  loadStep(1);
+function selectPill(element) {
+  const parentGroup = element.closest('.pill-group');
+  if (!parentGroup) return;
+
+  const buttons = parentGroup.querySelectorAll('.pill-btn');
+  buttons.forEach(btn => btn.classList.remove('selected'));
+  element.classList.add('selected');
+}
+
+// INICIALIZAÇÃO DA SPLASH SCREEN (LOADER)
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadStep(1);
+  } catch (err) {
+    console.warn("Aviso na inicialização:", err);
+  } finally {
+    // Garante que o loader suma após 2 segundos
+    setTimeout(() => {
+      const loader = document.getElementById('loader-wrapper');
+      if (loader) {
+        loader.classList.add('hidden');
+      }
+    }, 2000);
+  }
 });
