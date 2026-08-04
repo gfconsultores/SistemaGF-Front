@@ -1,38 +1,38 @@
 <section class="wizard-step active">
-  <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill progress-fill-100"></div>
+  </div>
   <h2 class="step-title">6. Resultado do Diagnóstico</h2>
 
-  <!-- Card 1: Resumo do Diagnóstico -->
+  <!-- Card 1: Resumo -->
   <div class="card-question">
-    <h3 style="margin-bottom: 15px; color: var(--primary-color, #1a568c);">Resumo da Análise</h3>
-    <p style="margin-bottom: 20px; color: #555; line-height: 1.5;">
+    <h3 class="result-title">Resumo da Análise</h3>
+    <p class="result-description">
       Com base nas informações fornecidas sobre regulamentação ANATEL, Responsabilidade Técnica e situação Fiscal, identificamos o seguinte cenário para a sua empresa:
     </p>
 
     <div class="form-grid">
-      <!-- Item de Diagnóstico 1 -->
-      <div class="form-group" style="background-color: #f8fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #1a568c;">
-        <strong style="display: block; margin-bottom: 5px;">Situação ANATEL</strong>
-        <span style="color: #666; font-size: 0.95rem;">Necessita de adequação/regularização da outorga SCM/STFC.</span>
+      <div class="diagnostic-card">
+        <strong>Situação ANATEL</strong>
+        <span>Necessita de adequação/regularização da outorga SCM/STFC.</span>
       </div>
 
-      <!-- Item de Diagnóstico 2 -->
-      <div class="form-group" style="background-color: #f8fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #1a568c;">
-        <strong style="display: block; margin-bottom: 5px;">Responsabilidade Técnica</strong>
-        <span style="color: #666; font-size: 0.95rem;">Requer regularização de profissional habilitado junto ao Conselho.</span>
+      <div class="diagnostic-card">
+        <strong>Responsabilidade Técnica</strong>
+        <span>Requer regularização de profissional habilitado junto ao Conselho.</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 2: Plano Recomendado / Próximos Passos -->
+  <!-- Card 2: Proposta -->
   <div class="card-question">
-    <h3 style="margin-bottom: 15px;">Proposta Recomendada</h3>
-    <p style="color: #555; line-height: 1.5; margin-bottom: 15px;">
+    <h3 class="result-title">Proposta Recomendada</h3>
+    <p class="result-description">
       Recomendamos o plano de <strong>Gestão e Consultoria Regulatória Completa</strong> para garantir a conformidade da empresa frente aos órgãos reguladores.
     </p>
   </div>
 
-  <!-- Ações da Etapa -->
+  <!-- Ações -->
   <div class="step-actions">
     <button type="button" class="btn-secondary" onclick="loadStep(5)">Voltar</button>
     <button type="button" class="btn-primary" onclick="alert('Diagnóstico concluído!')">Gerar Proposta Comercial</button>

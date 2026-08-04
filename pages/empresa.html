@@ -1,5 +1,8 @@
 <section class="wizard-step active">
-  <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 20%;"></div></div>
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill progress-fill-20"></div>
+  </div>
+  
   <h2 class="step-title">1. Empresa</h2>
 
   <div class="card-question">
@@ -9,11 +12,12 @@
         <label for="cnpj">CNPJ</label>
         <input type="text" class="form-control" id="cnpj" value="05439562000150" placeholder="00000000000000">
       </div>
-      <div class="form-group" style="justify-content: flex-end;">
-        <button type="button" class="btn-primary" style="height: 42px; width: 100%;">Consultar CNPJ</button>
+      
+      <div class="form-group form-group-btn">
+        <button type="button" class="btn-primary btn-consultar">Consultar CNPJ</button>
       </div>
 
-      <!-- Linha 2: Razão Social (Full Width) -->
+      <!-- Linha 2: Razão Social -->
       <div class="form-group full-width">
         <label for="razaoSocial">Razão Social *</label>
         <input type="text" class="form-control" id="razaoSocial" value="VIRTEX TELECOM LTDA">
@@ -65,14 +69,14 @@
         <input type="text" class="form-control" id="cpfRepresentante" placeholder="">
       </div>
       <div class="form-group">
-        <!-- Espaçador para manter o alinhamento da grid -->
+        <!-- Espaçador de grid -->
       </div>
     </div>
   </div>
 
-  <!-- Ações da Etapa -->
+  <!-- Ações -->
   <div class="step-actions">
-    <div></div> <!-- Espaçador para alinhar botão continuar à direita -->
-    <button type="button" class="btn-primary" onclick="loadStep(2)">Continuar</button>
+    <div></div>
+    <button type="button" class="btn-primary btn-continuar" onclick="loadStep(2)">Continuar</button>
   </div>
 </section>

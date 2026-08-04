@@ -1,55 +1,50 @@
 <section class="wizard-step active">
-  <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 85%;"></div></div>
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill progress-fill-85"></div>
+  </div>
   <h2 class="step-title">5. Necessidade</h2>
 
-  <!-- Card Principal -->
   <div class="card-question">
     <div class="form-grid">
       
-      <!-- Coluna 1 -->
       <div class="form-group">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
-          <input type="checkbox" name="necessidade" value="regularizacao" style="width: 18px; height: 18px;">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="regularizacao" class="custom-checkbox">
           <span>Regularização</span>
         </label>
       </div>
 
-      <!-- Coluna 2 -->
       <div class="form-group">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
-          <input type="checkbox" name="necessidade" value="anatel" style="width: 18px; height: 18px;">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="anatel" class="custom-checkbox">
           <span>Anatel</span>
         </label>
       </div>
 
-      <!-- Coluna 1 -->
       <div class="form-group">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
-          <input type="checkbox" name="necessidade" value="fiscal" style="width: 18px; height: 18px;">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="fiscal" class="custom-checkbox">
           <span>Fiscal</span>
         </label>
       </div>
 
-      <!-- Coluna 2 -->
       <div class="form-group">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
-          <input type="checkbox" name="necessidade" value="anatel_fiscal" style="width: 18px; height: 18px;">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="anatel_fiscal" class="custom-checkbox">
           <span>Anatel + Fiscal</span>
         </label>
       </div>
 
-      <!-- Coluna 1 -->
       <div class="form-group">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
-          <input type="checkbox" name="necessidade" value="resp_tecnica" style="width: 18px; height: 18px;">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="resp_tecnica" class="custom-checkbox">
           <span>Responsabilidade Técnica</span>
         </label>
       </div>
 
-      <!-- Coluna 2 -->
       <div class="form-group">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500;">
-          <input type="checkbox" name="necessidade" value="gestao_completa" style="width: 18px; height: 18px;">
+        <label class="checkbox-option">
+          <input type="checkbox" name="necessidade" value="gestao_completa" class="custom-checkbox">
           <span>Gestão completa</span>
         </label>
       </div>
@@ -57,7 +52,7 @@
     </div>
   </div>
 
-  <!-- Ações da Etapa -->
+  <!-- Ações -->
   <div class="step-actions">
     <button type="button" class="btn-secondary" onclick="loadStep(4)">Voltar</button>
     <button type="button" class="btn-primary" onclick="loadStep(6)">Gerar diagnóstico</button>

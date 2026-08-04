@@ -10,7 +10,7 @@
   --radius-card: 16px;
   --radius-btn: 24px;
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.03);
-  --sidebar-width: 240px;
+  --sidebar-width: 260px;
 }
 
 * {
@@ -18,6 +18,11 @@
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ESCONDE A NOTIFICAÇÃO DO BROWSERSYNC SE HOUVER */
+#__bs_notify__ {
+  display: none !important;
 }
 
 /* ESTRUTURA GLOBAL DA PÁGINA (TRAVA DE TELA) */
@@ -30,7 +35,7 @@ body {
   overflow: hidden;
 }
 
-/* 🚀 TELA DE PRÉ-CARREGAMENTO (SPLASH SCREEN COM EFEITO ZOOM) */
+/* 🚀 TELA DE PRÉ-CARREGAMENTO CLEAN (SPLASH SCREEN) */
 #loader-wrapper {
   position: fixed;
   top: 0;
@@ -41,65 +46,46 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0b2545;
-  overflow: hidden;
-  
-  /* 🖼️ Imagem de fundo ajustada */
-  background-image: url('../assets/tela.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-
-  /* ⚡ Animação do Zoom em execução constante */
-  animation: zoomBg 2.5s ease-out forwards;
+  background-color: #f8fafc; /* Branco frio corporativo */
   transition: opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
 }
 
-/* Quando ganha a classe .hidden, ele dá uma leve expansão e desaparece suave */
 #loader-wrapper.hidden {
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.08);
+  transform: scale(0.97); /* Suave contração na transição para o sistema */
 }
 
-.loader-overlay {
-  position: relative;
-  z-index: 2;
+.loader-logo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  background: rgba(10, 25, 47, 0.65);
-  padding: 24px 40px;
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  gap: 28px;
 }
 
-.loader-overlay p {
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+.splash-logo {
+  width: 260px;
+  max-width: 80vw;
+  height: auto;
+  object-fit: contain;
+  animation: logoPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 25px rgba(26, 86, 140, 0.08));
 }
 
-.spinner {
-  width: 42px;
-  height: 42px;
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  border-top: 4px solid #ffffff; 
+.spinner-brand {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #f2994a; /* Laranja idêntico ao símbolo da logo */
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.7s linear infinite;
 }
 
-/* 🎥 ANIMAÇÕES DE ZOOM E SPINNER */
-@keyframes zoomBg {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.15); /* Cresce dando zoom no símbolo central */
-  }
+/* 🎥 ANIMAÇÕES DA TELA DE CARREGAMENTO */
+@keyframes logoPulse {
+  0% { transform: scale(1); opacity: 0.92; }
+  50% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.92; }
 }
 
 @keyframes spin {
@@ -117,17 +103,43 @@ body {
   justify-content: space-between;
   padding: 0 24px;
   flex-shrink: 0;
+  z-index: 20;
 }
 
-.brand h1 { font-size: 1.5rem; font-weight: 700; }
-.brand span { font-size: 0.82rem; opacity: 0.85; }
-.brand 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand h1 { font-size: 1.4rem; font-weight: 700; }
+.brand span { font-size: 0.80rem; opacity: 0.85; }
+
+/* BOTÃO HAMBÚRGUER (Oculto no Desktop) */
+.btn-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.btn-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
 
 .btn-header {
   background-color: #ffffff;
   color: var(--primary-color);
   border: none;
-  padding: 8px 18px;
+  padding: 8px 16px;
   border-radius: var(--radius-btn);
   font-weight: 600;
   font-size: 0.85rem;
@@ -144,9 +156,10 @@ body {
   display: flex;
   flex: 1;
   overflow: hidden;
+  position: relative;
 }
 
-/* SIDEBAR STEPPER */
+/* SIDEBAR STEPPER (DESKTOP) */
 .sidebar {
   width: var(--sidebar-width);
   background-color: #ffffff;
@@ -154,19 +167,24 @@ body {
   padding: 20px 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   overflow-y: auto;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header-mobile {
+  display: none;
 }
 
 .step-item {
   display: flex;
   align-items: center;
-  padding: 10px 14px;
+  padding: 12px 14px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.90rem;
   color: var(--text-muted);
   transition: all 0.2s ease;
 }
@@ -174,7 +192,7 @@ body {
 .step-item:hover { background-color: var(--bg-app); }
 .step-item.active { background-color: #ebf4fc; color: var(--primary-color); }
 
-/* ÁREA DE CONTEÚDO (Única rolagem interna do sistema) */
+/* ÁREA DE CONTEÚDO DA PÁGINA */
 .content-area {
   flex: 1;
   padding: 32px;
@@ -192,24 +210,36 @@ body {
   gap: 20px;
 }
 
-/* BARRA DE PROGRESSO E CARDS DE PERGUNTA */
+/* BARRA DE PROGRESSO DO ATENDIMENTO */
 .progress-bar-container {
   width: 100%;
-  height: 4px;
+  height: 6px;
   background-color: #e2e8f0;
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
-  margin-bottom: 4px;
 }
 
 .progress-bar-fill {
   height: 100%;
   background-color: var(--secondary-color);
-  transition: width 0.3s ease;
+  transition: width 0.4s ease;
 }
 
-.step-title { font-size: 1.4rem; color: var(--text-main); }
+/* Classes utilitárias de porcentagem para evitar estilo inline */
+.progress-fill-20 { width: 20%; }
+.progress-fill-40 { width: 40%; }
+.progress-fill-50 { width: 50%; }
+.progress-fill-65 { width: 65%; }
+.progress-fill-85 { width: 85%; }
+.progress-fill-100 { width: 100%; }
 
+.step-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* CARDS DE PERGUNTA E ESTRUTURA DOS FORMULÁRIOS */
 .card-question {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -221,18 +251,37 @@ body {
   gap: 16px;
 }
 
-.card-question h3 { font-size: 1.05rem; font-weight: 600; }
+.card-question h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
 
-/* GRID DE FORMULÁRIO */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group.full-width { grid-column: span 2; }
-.form-group label { font-size: 0.85rem; font-weight: 600; }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group-btn {
+  justify-content: flex-end;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
 
 .form-control {
   padding: 10px 14px;
@@ -241,12 +290,21 @@ body {
   font-size: 0.95rem;
   outline: none;
   background-color: #ffffff;
+  color: var(--text-main);
+  transition: border-color 0.2s ease;
 }
 
-.form-control:focus { border-color: var(--primary-color); }
+.form-control:focus {
+  border-color: var(--primary-color);
+}
 
-/* BOTÕES ESTILO PÍLULA (SIM / NÃO / NÃO SABE INFORMAR) */
-.pill-group { display: flex; gap: 10px; flex-wrap: wrap; }
+/* BOTÕES PÍLULA (SIM / NÃO / NÃO SABE INFORMAR) */
+.pill-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .pill-btn {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
@@ -258,14 +316,27 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
+.pill-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
 .pill-btn.selected {
   background-color: var(--primary-color);
   color: #ffffff;
   border-color: var(--primary-color);
 }
 
-/* BOTÕES DE NAVEGAÇÃO DAS ETAPAS */
-.step-actions { display: flex; justify-content: space-between; margin-top: 12px; }
+/* NAVEGAÇÃO ENTRE AS ETAPAS (VOLTAR / CONTINUAR) */
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  gap: 12px;
+}
+
 .btn-secondary {
   background-color: #e2e8f0;
   color: var(--text-main);
@@ -273,17 +344,48 @@ body {
   padding: 10px 24px;
   border-radius: 8px;
   font-weight: 600;
+  font-size: 0.90rem;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #cbd5e1;
 }
 
 .btn-primary {
   background-color: var(--primary-color);
   color: #ffffff;
-  border: none;
-  padding: 10px 24px;
   border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 10px 24px;
   font-weight: 600;
+  font-size: 0.90rem;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Botões com dimensões personalizadas sem style inline */
+.btn-consultar {
+  height: 42px;
+  width: 100%;
+}
+
+.btn-continuar {
+  height: 38px;
+  width: 180px;
+  max-width: 100%;
 }
 
 /* RODAPÉ FIXO NA PARTE INFERIOR */
@@ -318,19 +420,83 @@ body {
   text-decoration: underline;
 }
 
-/* RESPONSIVIDADE TABLET E MOBILE */
-@media (max-width: 850px) {
-  .main-container { flex-direction: column; }
-  .sidebar {
-    width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
+/* OVERLAY PARA O MENU MOBILE */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* 📱 RESPONSIVIDADE PARA CELULARES E TABLETS (ATÉ 950PX) */
+@media (max-width: 950px) {
+  .menu-overlay.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
-  .step-item { white-space: nowrap; }
+
+  .btn-hamburger { display: flex; }
+  .topbar { padding: 0 16px; }
+  .brand h1 { font-size: 1.15rem; }
+  .brand span { font-size: 0.72rem; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .btn-close-menu {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .content-area { padding: 16px; }
   .form-grid { grid-template-columns: 1fr; }
   .form-group.full-width { grid-column: span 1; }
-  .content-area { padding: 16px; }
+
+  /* 📱 EMPILHA OS BOTÕES EM TELAS MENORES (UM ABAIXO DO OUTRO) */
+  .step-actions {
+    flex-direction: column-reverse; /* 👈 Inverte para o botão 'Continuar' ficar no topo */
+    width: 100%;
+  }
+
+  .step-actions button,
+  .btn-continuar {
+    width: 100% !important; /* Faz ambos ocuparem a largura inteira da tela */
+    height: 42px;
+  }
+
+  .footer-content { flex-direction: column; gap: 6px; text-align: center; }
 }
